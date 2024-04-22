@@ -11,11 +11,12 @@ import Spinner from 'react-bootstrap/Spinner'
 
 export default function FilmSingle() {
   // ! State
-  const [film, setFilm] = useState([]) // This will be an object
+  const [film, setFilm] = useState() // This will be an object
   const [error, setError] = useState('')
 
   // ! Local Variables
-  // const { filmId } = useParams() - use this once weve set up single pages
+  const { filmId } = useParams()
+
 
   // ! Effects
   // useEffect(() => {
@@ -31,19 +32,19 @@ export default function FilmSingle() {
   //   }
   //   getFilmData()
   // }, [])
+
   useEffect(() => {
     const getFilmData = async () => {
       try {
-        const response = await axios.get('https://www.swapi.tech/api/films/')
-        const filmData = response.data.result
-        setFilm(filmData)
-        console.log(filmData)
+        const { data } = await axios.get(`https://www.swapi.tech/api/films/${filmId}`)
+        setFilm(data)
+        console.log(data.result._id)
       } catch (error) {
         setError(error.message)
       }
     }
     getFilmData()
-  }, [])
+  }, [filmId])
 
 
 
