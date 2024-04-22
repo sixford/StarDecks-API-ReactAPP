@@ -11,7 +11,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import Spinner from 'react-bootstrap/Spinner'
 
 export default function Films() {
 
@@ -20,19 +19,29 @@ export default function Films() {
   const [error, setError] = useState('')
   const [filmTitles, setFilmTitles] = useState([])
 
+  //! images
+  // const imageFileNames = {
+  //   "1": '../assets/1.png',
+  //   "2": '../assets/2.png',
+  //   "3": '../assets/3.png',
+  //   "4": '../assets/4.png',
+  //   "5": '../assets/5.png',
+  //   "6": '../assets/6.png',
+  // }
+
   //! Effects
   useEffect(() => {
     const getFilmData = async () => {
       try {
         const response = await axios.get('https://www.swapi.tech/api/films/')
-        const filmsData = response.data.result;
-        setFilms(filmsData);
-        console.log(filmsData)
-        const titles = filmsData.map(film => film.properties.title)
-        setFilmTitles(titles)
-        console.log(titles)
+        const filmsData = response.data.result
+        setFilms(filmsData)
+        // console.log(filmsData)
+        // const titles = filmsData.map(film => film.properties.title)
+        // setFilmTitles(titles)
+        // console.log(titles)
       } catch (error) {
-        console.error('Error fetching film data:', error)
+        setError(error.message)
       }
     }
     getFilmData()
@@ -45,29 +54,29 @@ export default function Films() {
         <Row>
           {films.length > 0 ?
             films.map(film => {
-              const { uid, titles } = film
-              console.log(uid, titles)
+              const { uid } = film
+              console.log(uid)
               return (
-                <Col className = 'mb-4' key = { uid } xs = { 12} sm = { 6} md = { 4} lg = { 3}>
+                <Col className='mb-4' key={film.uid} xs={12} sm={9} md={6} lg={4}>
                   <Card className='h-100'>
-                    <Card.Img variant="top" src={'image here'} />
+                  <Card.Img 
+                    variant="top" 
+                    src={`../assets/${film.uid}.png`} 
+                    style={{ height: "100px", width: "50%" }}
+                  />
                     <Card.Body className='d-flex flex-column'>
-                      <Card.Title>{'title here'}</Card.Title>
-                      <Card.Text>
-                        Location: <br />
-                        Date:
-                      </Card.Text>
+                      <Card.Title>{film.properties.title}</Card.Title>
                       <Link to={``} className='btn btn-brand mt-auto'>View details</Link>
                     </Card.Body>
                   </Card>
-          </Col>
-        )
+                </Col>
+              )
             })
-        :
-        console.log('hola')
+            :
+            console.log('hola')
           }
-      </Row>
-    </Container >
+        </Row>
+      </Container >
     </>
   )
 }
