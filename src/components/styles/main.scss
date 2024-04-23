@@ -27,6 +27,7 @@ body {
   font-family: 'Star Wars', sans-serif;
   color: #ffe81f;
   font-size: 1em;
+  border: none;
 }
 
 .film-single h1 {
@@ -175,6 +176,11 @@ img {
 }
 
 /*** Media queries for adjusting to different screen sizes ***/
+@media only screen and (max-width: 800px) {
+  .starwars-demo {
+    font-size: 13px;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .starwars-demo {
@@ -182,7 +188,7 @@ img {
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
   .starwars-demo {
     font-size: 7px;
   }

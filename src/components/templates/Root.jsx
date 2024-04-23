@@ -1,6 +1,8 @@
 import { Outlet, Link } from 'react-router-dom'
+// import backgroundVideo from '../assets/star-background.mp4'
 
 import Navbar from '../Navbar'
+import Footer from '../Footer'
 
 export default function Root() {
 
@@ -13,14 +15,15 @@ export default function Root() {
 
       {/* Main Page Content */}
       <main>
+        {/* <video autoPlay loop muted id='video'>
+          <source src={backgroundVideo} type='video/mp4' />
+        </video> */}
         {/* This is where the page component should be rendered */}
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer>
-        <span className="small">&copy; Star Wars API {new Date().getFullYear()}</span>
-      </footer>
+      <Footer />
     </>
   )
 }

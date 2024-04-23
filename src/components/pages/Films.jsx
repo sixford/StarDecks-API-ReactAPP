@@ -62,8 +62,8 @@ export default function Films() {
 
 
   return (
-    <Container className='text-center'>
-      <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '100vh' }}>
+    <Container fluid className='text-center'>
+      <div className='d-flex justify-content-center align-items-center min-vh-100'>
         <div>
           <Carousel>
             {films.map((film) => (
@@ -88,8 +88,8 @@ export default function Films() {
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}
 
 
 

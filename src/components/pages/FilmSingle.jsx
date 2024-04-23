@@ -53,7 +53,7 @@ export default function FilmSingle() {
   return (
     <div className='film-single'>
       {film ?
-        <Container className='my-4'>
+        <Container fluid className='my-4'>
           <Row>
             <Col sm={12} md={6}>
               <img
@@ -68,7 +68,7 @@ export default function FilmSingle() {
               <h2><span>Producer: </span>{film.properties.producer}</h2>
               <h2><span></span>{film.properties.opening_crawl}</h2>
               <hr />
-              <Link to='/films' className='btn btn-brand'>Back to films</Link>
+              <Link to='/films' className='btn button-font btn-brand'>Back to films</Link>
             </Col>
           </Row>
         </Container>
