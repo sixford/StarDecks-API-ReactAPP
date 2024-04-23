@@ -76,7 +76,9 @@ export default function FilmSingle() {
         error ?
           <p className='text-danger'>{error}</p>
           :
-          <Spinner className='mx-auto' animation='border' variant='secondary' />
+          <div className="d-flex justify-content-center align-items-center vh-100">
+          <Spinner animation="border" variant="secondary" />
+        </div>
       }
     </div>
   )

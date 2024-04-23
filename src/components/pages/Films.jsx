@@ -21,7 +21,9 @@ import main4 from '../assets/mainImages/4.png'
 import main5 from '../assets/mainImages/5.png'
 import main6 from '../assets/mainImages/6.png'
 
-
+// import sounds 
+import woosh from '../assets/sounds/woosh.mp3'
+import buttonClickSound from '../assets/sounds/blaster-firing.mp3'
 
 
 export default function Films() {
@@ -29,6 +31,9 @@ export default function Films() {
   //! State
   const [films, setFilms] = useState([])
   const [error, setError] = useState('')
+  const [carouselIndex, setCarouselIndex] = useState(0)
+  const arrowClickAudio = new Audio(woosh)
+  const buttonClickAudio = new Audio(buttonClickSound)
 
 
   // //! images
@@ -60,24 +65,36 @@ export default function Films() {
     getFilmData()
   }, [])
 
+  const handleCarouselSelect = (selectedIndex, e) => {
+    setCarouselIndex(selectedIndex)
+    arrowClickAudio.volume = 0.6
+    // Play sound effect when carousel navigation occurs
+    arrowClickAudio.play()
+  }
+
+  const handleButtonClick = () => {
+    // Play sound effect when button is clicked
+    buttonClickAudio.volume = 0.2
+    buttonClickAudio.play()
+  }
 
   return (
     <Container fluid className='text-center'>
       <div className='d-flex justify-content-center align-items-center min-vh-100'>
         <div>
-          <Carousel>
+          <Carousel activeIndex={carouselIndex} onSelect={handleCarouselSelect}>
             {films.map((film) => (
               <Carousel.Item key={film.uid}>
                 <img
                   className='d-block w-100'
                   src={mainImages[film.uid]}
                   alt={`Image of ${film.properties.title}`}
-                  style={{ height: '400px', width: 'auto', objectFit: 'cover' }} 
+                  style={{ height: '400px', width: 'auto', objectFit: 'cover' }}
                 />
                 <Carousel.Caption>
                   <h3 className='title-font'>{film.properties.title}</h3>
                   <p>
-                    <Link to={`/films/${film.uid}`} className='btn btn-brand button-font'>
+                    <Link to={`/films/${film.uid}`} className='btn btn-brand button-font' onClick={handleButtonClick}>
                       View details
                     </Link>
                   </p>
@@ -91,35 +108,3 @@ export default function Films() {
   )
 }
 
-
-
-// <>
-// <h1 className='text-center my-4'>Films</h1>
-// <Container fluid className='text-center'>
-//   <Row>
-//     {films.length > 0 ?
-//       films.map(film => {
-//         const { uid } = film
-//         console.log(uid)
-//         return (
-//           <Col className='mb-4' key={film.uid} xs={12} sm={9} md={6} lg={4}>
-//             <Card className='h-100'>
-//               <Card.Img
-//                 variant="top"
-//                 src={mainImages[film.uid]}
-//                 style={{ height: "100%", width: "50%" }}
-//               />
-//               <Card.Body className='d-flex flex-column'>
-//                 <Card.Title>{film.properties.title}</Card.Title>
-//                 <Link to={`/films/${uid}`} className='btn btn-brand mt-auto'>View details</Link>
-//               </Card.Body>
-//             </Card>
-//           </Col>
-//         )
-//       })
-//       :
-//       console.log('hola')
-//     }
-//   </Row>
-// </Container >
-// </>
