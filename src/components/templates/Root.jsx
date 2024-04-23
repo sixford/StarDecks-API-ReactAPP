@@ -7,7 +7,7 @@ export default function Root() {
       {/* Header / Nav */}
       <header>
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/"></Link>
           <Link to="/films">Films</Link>
         </nav>
       </header>

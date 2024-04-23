@@ -14,6 +14,8 @@ import FilmSingle from './components/pages/FilmSingle.jsx'
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.js'
+import './components/styles/main.scss'
+
 
 
 
