@@ -63,7 +63,7 @@ export default function Films() {
 
   return (
     <Container className='text-center'>
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '100vh' }}>
         <div>
           <Carousel>
             {films.map((film) => (
@@ -75,9 +75,9 @@ export default function Films() {
                   style={{ height: '400px', width: 'auto', objectFit: 'cover' }} 
                 />
                 <Carousel.Caption>
-                  <h3>{film.properties.title}</h3>
+                  <h3 className='title-font'>{film.properties.title}</h3>
                   <p>
-                    <Link to={`/films/${film.uid}`} className='btn btn-brand'>
+                    <Link to={`/films/${film.uid}`} className='btn btn-brand button-font'>
                       View details
                     </Link>
                   </p>

@@ -51,24 +51,24 @@ export default function FilmSingle() {
 
 
   return (
-    <div className="film-single">
+    <div className='film-single'>
       {film ?
         <Container className='my-4'>
           <Row>
             <Col sm={12} md={6}>
               <img
                 src={posterImages[film.uid]}
-                style={{ height: "100%", width: "100%" }}
+                style={{ height: '100%', width: '100%' }}
               />
             </Col>
             <Col sm={12} md={6} className='d-flex flex-column justify-content-center'>
               <h1>{film.properties.title}</h1>
               <h2><span>Director: </span>{film.properties.director}</h2>
               <h2><span>Release Date: </span>{film.properties.release_date}</h2>
-              <h2><span>Opening Crawl: </span>{film.properties.opening_crawl}</h2>
               <h2><span>Producer: </span>{film.properties.producer}</h2>
+              <h2><span></span>{film.properties.opening_crawl}</h2>
               <hr />
-              <Link to="#" className='btn btn-brand'>Back to films</Link>
+              <Link to='/films' className='btn btn-brand'>Back to films</Link>
             </Col>
           </Row>
         </Container>
@@ -76,7 +76,7 @@ export default function FilmSingle() {
         error ?
           <p className='text-danger'>{error}</p>
           :
-          <Spinner className='mx-auto' animation="border" variant="secondary" />
+          <Spinner className='mx-auto' animation='border' variant='secondary' />
       }
     </div>
   )

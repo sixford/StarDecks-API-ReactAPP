@@ -1,10 +1,33 @@
 // this page will have an introduction to the app (Aurebesh?)
+//! state
+import { useState } from 'react'
 
-export default function Home(){
+import star from './assets/Star.png'
+import wars from './assets/Wars.png'
+
+export default function Home() {
+
+  const [animationComplete, setAnimationComplete] = useState(false)
+
+  const handleAnimationEnd = () => {
+    setAnimationComplete(true)
+  }
+
   return (
-    <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-      <h1>Welcome to the Star Wars Films Wookiepedia</h1>
-      <p className="lead">Learn about the biggest sci-fi serires in history!</p>
+    <div className='starwars-demo'>
+      <img
+        src={star}
+        alt='Star'
+        className={`star ${animationComplete ? 'hidden' : ''}`}
+        onAnimationEnd={handleAnimationEnd}
+      />
+      <img
+        src={wars}
+        alt='Wars'
+        className={`wars ${animationComplete ? 'hidden' : ''}`}
+        onAnimationEnd={handleAnimationEnd}
+      />
+      <h2 className='byline lead' id='byline'>A Gallery Far Far Away...</h2>
     </div>
   )
 }

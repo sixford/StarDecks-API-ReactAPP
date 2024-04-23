@@ -1,15 +1,14 @@
 import { Outlet, Link } from 'react-router-dom'
 
+import Navbar from '../Navbar'
+
 export default function Root() {
 
   return (
     <>
       {/* Header / Nav */}
       <header>
-        <nav>
-          <Link to="/"></Link>
-          <Link to="/films">Films</Link>
-        </nav>
+        <Navbar />
       </header>
 
       {/* Main Page Content */}
