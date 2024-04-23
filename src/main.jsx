@@ -17,6 +17,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.js'
 
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         element: <Films />
       },
       {
-        path: 'FilmSingle',
+        path: 'films/:filmId',
         element: <FilmSingle />
       }
     ]

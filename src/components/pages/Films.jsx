@@ -12,22 +12,26 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 
+// import images and add into object in function
+import posterImages from '../assets/posterImages'
+
+
 export default function Films() {
 
   //! State
   const [films, setFilms] = useState([])
   const [error, setError] = useState('')
-  const [filmTitles, setFilmTitles] = useState([])
+
 
   //! images
-  // const imageFileNames = {
-  //   "1": '../assets/1.png',
-  //   "2": '../assets/2.png',
-  //   "3": '../assets/3.png',
-  //   "4": '../assets/4.png',
-  //   "5": '../assets/5.png',
-  //   "6": '../assets/6.png',
-  // }
+  const posterImages = {
+    1: new URL('../assets/posters/1.png', import.meta.url).href,
+    2: new URL('../assets/posters/2.png', import.meta.url).href,
+    3: new URL('../assets/posters/3.png', import.meta.url).href,
+    4: new URL('../assets/posters/4.png', import.meta.url).href,
+    5: new URL('../assets/posters/5.png', import.meta.url).href,
+    6: new URL('../assets/posters/6.png', import.meta.url).href,
+  }
 
   //! Effects
   useEffect(() => {
@@ -59,14 +63,14 @@ export default function Films() {
               return (
                 <Col className='mb-4' key={film.uid} xs={12} sm={9} md={6} lg={4}>
                   <Card className='h-100'>
-                  <Card.Img 
-                    variant="top" 
-                    src={`../assets/${film.uid}.png`} 
-                    style={{ height: "100px", width: "50%" }}
-                  />
+                    <Card.Img
+                      variant="top"
+                      src={posterImages[film.uid]}
+                      style={{ height: "100px", width: "50%" }}
+                    />
                     <Card.Body className='d-flex flex-column'>
                       <Card.Title>{film.properties.title}</Card.Title>
-                      <Link to={``} className='btn btn-brand mt-auto'>View details</Link>
+                      <Link to={`/films/${uid}`} className='btn btn-brand mt-auto'>View details</Link>
                     </Card.Body>
                   </Card>
                 </Col>
