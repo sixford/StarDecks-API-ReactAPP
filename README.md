@@ -14,9 +14,9 @@ Clone the repository:
 git clone https://github.com/mollykg123/StarDecks-API-ReactAPP.git
 Navigate to the project directory:
 
-bash
-Copy code
+
 cd StarDecks-API-ReactAPP
+
 Install dependencies:
 
 npm install
